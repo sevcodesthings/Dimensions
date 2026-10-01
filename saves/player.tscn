@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://3k6s00wwjk72"]
+
+[ext_resource type="Script" uid="uid://ccsfuao1rlhhy" path="res://scripts/movementsystem.gd" id="1_l71kq"]
+[ext_resource type="Texture2D" uid="uid://btk78f0def0pd" path="res://assets/idle/frame1idle.png" id="2_bnkjy"]
+[ext_resource type="Texture2D" uid="uid://do3rg2eapqvc1" path="res://assets/idle/frame2idle.png" id="3_lnbdv"]
+[ext_resource type="Texture2D" uid="uid://cxcg8ox1gm3gr" path="res://assets/idle/frame3idle.png" id="4_4r74l"]
+[ext_resource type="Texture2D" uid="uid://vnewmk7xk3ut" path="res://assets/run/frame1run.png" id="5_5ff6m"]
+[ext_resource type="Texture2D" uid="uid://buwdwgockwr5v" path="res://assets/run/frame4run.png" id="8_egfol"]
+[ext_resource type="Texture2D" uid="uid://d2ep81mfk3pfl" path="res://assets/run/frame5run.png" id="9_bjoyv"]
+[ext_resource type="Texture2D" uid="uid://jnihfkhnq4nf" path="res://assets/run/frame6run.png" id="10_mmvwc"]
+[ext_resource type="Texture2D" uid="uid://lyd262u8xf8g" path="res://assets/run/frame7run.png" id="11_ybnbo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w2ah2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bnkjy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lnbdv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4r74l")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_5ff6m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_egfol")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_bjoyv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_mmvwc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ybnbo")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w2ah2"]
+radius = 5.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1107011114]
+collision_layer = 2
+script = ExtResource("1_l71kq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=701693152]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_w2ah2")
+animation = &"run"
+frame_progress = 0.5926829
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=275013509]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_w2ah2")
