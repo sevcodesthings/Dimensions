@@ -1,25 +1,38 @@
 [gd_scene format=3 uid="uid://k2nf5u5fsn3f"]
 
-[ext_resource type="Texture2D" uid="uid://ds3u612rsv0fv" path="res://assets/frame1coin.png" id="1_xtw8i"]
 [ext_resource type="Script" uid="uid://qd6g4v3otte8" path="res://scripts/golden_coin.gd" id="1_y4du7"]
-[ext_resource type="Texture2D" uid="uid://r5mv0f4txoum" path="res://assets/frame2coin.png" id="2_y4du7"]
-[ext_resource type="Texture2D" uid="uid://bfxip7eh214pg" path="res://assets/framecoin6.png" id="4_ac5ek"]
-[ext_resource type="Texture2D" uid="uid://x42vvul78x1h" path="res://assets/frame4coin.png" id="4_bhaxv"]
+[ext_resource type="Texture2D" uid="uid://bhw2ncj5co7eg" path="res://assets/Coin/frame1coin.png" id="2_ehoe7"]
+[ext_resource type="Texture2D" uid="uid://qshtcnv6yxjm" path="res://assets/Coin/frame1cointake.png" id="3_ehoe7"]
+[ext_resource type="Texture2D" uid="uid://tp8oldtp4ya1" path="res://assets/Coin/frame2cointake.png" id="4_bhaxv"]
+[ext_resource type="Texture2D" uid="uid://c36nyluwf1xw6" path="res://assets/Coin/frame3cointake.png" id="5_ns6ku"]
+[ext_resource type="Texture2D" uid="uid://bqjeu1fmpv7fq" path="res://assets/Coin/frame4cointake.png" id="6_muywh"]
+[ext_resource type="Texture2D" uid="uid://c0sid6hegytq2" path="res://assets/Coin/frame5cointake.png" id="7_nl0vv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w2ah2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_xtw8i")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_y4du7")
+"texture": ExtResource("3_ehoe7")
 }, {
 "duration": 1.0,
 "texture": ExtResource("4_bhaxv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_ac5ek")
+"texture": ExtResource("5_ns6ku")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_muywh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_nl0vv")
+}],
+"loop": 1,
+"name": &"claim",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ehoe7")
 }],
 "loop": 1,
 "name": &"default",
@@ -36,8 +49,9 @@ script = ExtResource("1_y4du7")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1596081082]
 position = Vector2(-2, 0)
 sprite_frames = SubResource("SpriteFrames_w2ah2")
+animation = &"claim"
 autoplay = "default"
-frame_progress = 0.11975569
+frame_progress = 0.69207364
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=606451111]
 position = Vector2(-2, 0)

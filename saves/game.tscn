@@ -4,6 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://3k6s00wwjk72" path="res://saves/player.tscn" id="2_fj1im"]
 [ext_resource type="PackedScene" uid="uid://k2nf5u5fsn3f" path="res://saves/golden_coin.tscn" id="3_ge807"]
 
+[sub_resource type="Gradient" id="Gradient_ge807"]
+offsets = PackedFloat32Array(0, 0.22891566, 0.52409637)
+colors = PackedColorArray(0, 0.29151577, 0.4746768, 1, 0.00067970244, 0.2976489, 0.49191213, 1, 0.37196392, 0.71165985, 0.9994312, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w2ah2"]
+gradient = SubResource("Gradient_ge807")
+fill_from = Vector2(0.4869565, 0.99130434)
+fill_to = Vector2(0.49130434, 0.17826086)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2o6t"]
 texture = ExtResource("1_y8tbv")
 0:0/0 = 0
@@ -38,7 +47,19 @@ texture = ExtResource("1_y8tbv")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_e2o6t")
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w2ah2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w2ah2"]
+size = Vector2(31, 174)
+
 [node name="Game" type="Node2D" unique_id=1925531236]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1591458440]
+offset_left = -4333.0
+offset_top = -3012.0
+offset_right = 3733.0
+offset_bottom = 5415.0
+texture = SubResource("GradientTexture2D_w2ah2")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=319053999]
 tile_set = SubResource("TileSet_kfp0w")
@@ -49,13 +70,21 @@ layer_0/tile_data = PackedInt32Array(65520, 65536, 1, 65521, 65536, 1, 65530, 0,
 position = Vector2(-10, 1)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=2026194706]
-zoom = Vector2(3, 3)
+zoom = Vector2(4, 4)
 
-[node name="GoldCoin" parent="." unique_id=721426214 instance=ExtResource("3_ge807")]
+[node name="Coin1" parent="." unique_id=721426214 instance=ExtResource("3_ge807")]
 position = Vector2(-74, -8)
 
-[node name="GoldCoin2" parent="." unique_id=1082982168 instance=ExtResource("3_ge807")]
+[node name="Coin2" parent="." unique_id=1082982168 instance=ExtResource("3_ge807")]
 position = Vector2(-319, -88)
 
-[node name="GoldCoin3" parent="." unique_id=168203791 instance=ExtResource("3_ge807")]
-position = Vector2(-574, -130)
+[node name="Coin3" parent="." unique_id=168203791 instance=ExtResource("3_ge807")]
+position = Vector2(-573, -105)
+
+[node name="InvisibleWall" type="StaticBody2D" parent="." unique_id=1672987527]
+position = Vector2(303, 0)
+physics_material_override = SubResource("PhysicsMaterial_w2ah2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleWall" unique_id=2051820484]
+position = Vector2(15.5, -77)
+shape = SubResource("RectangleShape2D_w2ah2")
