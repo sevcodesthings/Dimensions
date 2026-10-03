@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bcyjwgenb8rs8"]
+
+[ext_resource type="Script" uid="uid://q8ilkak7h4rc" path="res://cavelight.gd" id="1_lwfwd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w2ah2"]
+size = Vector2(1, 1)
+
+[node name="CaveLight" type="Area2D" unique_id=1470228267]
+collision_mask = 2
+script = ExtResource("1_lwfwd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1394353116]
+shape = SubResource("RectangleShape2D_w2ah2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

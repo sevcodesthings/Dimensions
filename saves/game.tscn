@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ncox5hdvixr8" path="res://assets/tilemap.png" id="1_y8tbv"]
 [ext_resource type="PackedScene" uid="uid://3k6s00wwjk72" path="res://saves/player.tscn" id="2_fj1im"]
 [ext_resource type="PackedScene" uid="uid://k2nf5u5fsn3f" path="res://saves/golden_coin.tscn" id="3_ge807"]
+[ext_resource type="PackedScene" uid="uid://bcyjwgenb8rs8" path="res://saves/cave_light.tscn" id="4_swe32"]
 
 [sub_resource type="Gradient" id="Gradient_ge807"]
 offsets = PackedFloat32Array(0, 0.22891566, 0.52409637)
@@ -47,18 +48,29 @@ texture = ExtResource("1_y8tbv")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_e2o6t")
 
+[sub_resource type="Gradient" id="Gradient_swe32"]
+colors = PackedColorArray(0, 0, 0, 1, 0.37413925, 0.37413928, 0.37413922, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_f3gg3"]
+gradient = SubResource("Gradient_swe32")
+fill_from = Vector2(0.53913045, 1)
+fill_to = Vector2(0.526087, 0)
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w2ah2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2ah2"]
 size = Vector2(31, 174)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfp0w"]
+size = Vector2(100, 200)
+
 [node name="Game" type="Node2D" unique_id=1925531236]
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1591458440]
-offset_left = -4333.0
-offset_top = -3012.0
-offset_right = 3733.0
-offset_bottom = 5415.0
+[node name="TempSky" type="TextureRect" parent="." unique_id=1591458440]
+offset_left = -2223.0
+offset_top = -2306.0
+offset_right = 2363.0
+offset_bottom = 1521.0
 texture = SubResource("GradientTexture2D_w2ah2")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=319053999]
@@ -72,6 +84,15 @@ position = Vector2(-10, 1)
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=2026194706]
 zoom = Vector2(4, 4)
 
+[node name="CaveLight" type="TextureRect" parent="." unique_id=1460685968]
+modulate = Color(0.70980394, 0.70980394, 0.70980394, 0)
+self_modulate = Color(1, 1, 1, 0.63529414)
+offset_left = -4499.0
+offset_top = -1819.0
+offset_right = -1695.0
+offset_bottom = 2711.0
+texture = SubResource("GradientTexture2D_f3gg3")
+
 [node name="Coin1" parent="." unique_id=721426214 instance=ExtResource("3_ge807")]
 position = Vector2(-74, -8)
 
@@ -79,7 +100,7 @@ position = Vector2(-74, -8)
 position = Vector2(-319, -88)
 
 [node name="Coin3" parent="." unique_id=168203791 instance=ExtResource("3_ge807")]
-position = Vector2(-573, -105)
+position = Vector2(-667, -118)
 
 [node name="InvisibleWall" type="StaticBody2D" parent="." unique_id=1672987527]
 position = Vector2(303, 0)
@@ -88,3 +109,10 @@ physics_material_override = SubResource("PhysicsMaterial_w2ah2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InvisibleWall" unique_id=2051820484]
 position = Vector2(15.5, -77)
 shape = SubResource("RectangleShape2D_w2ah2")
+
+[node name="CaveLight2" parent="." unique_id=1470228267 instance=ExtResource("4_swe32")]
+position = Vector2(-2094, -35)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CaveLight2" unique_id=1202540363]
+position = Vector2(-6, -90)
+shape = SubResource("RectangleShape2D_kfp0w")
